@@ -12,13 +12,15 @@ interface GitHubApiService {
     @GET("repos/{owner}/{repo}/pulls?state=open")
     suspend fun getOpenPullRequests(
         @Header("Authorization") token: String,
+        @Header("User-Agent") userAgent: String = "SmartHomeGitOps",
         @Path("owner") owner: String,
         @Path("repo") repo: String
     ): List<PullRequest>
 
-    @GET("repos/{owner}/{repo}/pulls?state=open")
+    @GET("repos/{owner}/{repo}/issues/{pull_number}/comments")
     suspend fun getPullRequestComments(
         @Header("Authorization") token: String,
+        @Header("User-Agent") userAgent: String = "SmartHomeGitOps",
         @Path("owner") owner: String,
         @Path("repo") repo: String,
         @Path("pull_number") pullNumber: Int
