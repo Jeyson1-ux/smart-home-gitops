@@ -12,6 +12,7 @@ interface GitHubApiService {
     @GET("repos/{owner}/{repo}/pulls?state=open")
     suspend fun getOpenPullRequests(
         @Header("Authorization") token: String,
+        @Header("User-Agent") userAgent: String = "SmartHomeGitOps",
         @Path("owner") owner: String,
         @Path("repo") repo: String
     ): List<PullRequest>

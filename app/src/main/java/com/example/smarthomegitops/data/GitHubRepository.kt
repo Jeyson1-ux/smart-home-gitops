@@ -11,10 +11,19 @@ class GitHubRepository (
 
     suspend fun fetchLatestAttackComment(): String? {
         return try {
-            val prs = apiService.getOpenPullRequests(authHeader, owner, repoName)
+            val prs = apiService.getOpenPullRequests(
+                token = authHeader,
+                owner = owner,
+                repo = repoName
+            )
             val latestPr = prs.firstOrNull() ?: return null
 
-            val comments = apiService.getPullRequestComments(authHeader, owner, repoName, latestPr.number)
+            val comments = apiService.getPullRequestComments(
+                token = authHeader,
+                owner = owner,
+                repo = repoName,
+                pullNumber = latestPr.number
+            )
 
             comments.lastOrNull()?.body
         } catch (e: Exception) {
