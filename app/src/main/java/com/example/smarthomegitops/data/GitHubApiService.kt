@@ -16,7 +16,7 @@ interface GitHubApiService {
         @Path("repo") repo: String
     ): List<PullRequest>
 
-    @GET("repos/{owner}/{repo}/{pull_number}/comments")
+    @GET("repos/{owner}/{repo}/issues/{pull_number}/comments")
     suspend fun getPullRequestComments(
         @Header("Authorization") token: String,
         @Path("owner") owner: String,
