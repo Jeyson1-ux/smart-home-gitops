@@ -1,5 +1,6 @@
 package com.example.smarthomegitops.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.smarthomegitops.data.GitHubRepository
@@ -44,7 +45,7 @@ class MainViewModel (
                         _uiState.value = UiState.Normal
                     }
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    Log.e("PollingError", "Error fetching comment", e)
                 }
 
                 delay(30_000L)
