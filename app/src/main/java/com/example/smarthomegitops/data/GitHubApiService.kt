@@ -19,6 +19,7 @@ interface GitHubApiService {
     @GET("repos/{owner}/{repo}/issues/{pull_number}/comments")
     suspend fun getPullRequestComments(
         @Header("Authorization") token: String,
+        @Header("User-Agent") userAgent: String = "SmartHomeGitOps",
         @Path("owner") owner: String,
         @Path("repo") repo: String,
         @Path("pull_number") pullNumber: Int
