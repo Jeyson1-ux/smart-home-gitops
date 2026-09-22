@@ -31,7 +31,6 @@ class DeceptionDetector {
                 matchCount++
             }
         }
-
         val confidence = if (matchCount > 0) {
             val score = matchCount * 35
             if (score > 100) 100 else score

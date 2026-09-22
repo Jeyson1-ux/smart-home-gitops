@@ -1,6 +1,7 @@
 package com.example.smarthomegitops.data
 
 import com.example.smarthomegitops.BuildConfig
+import com.example.smarthomegitops.ClosePullRequestRequest
 
 class GitHubRepository (
     private val apiService: GitHubApiService = GitHubApiService.create()
@@ -30,5 +31,28 @@ class GitHubRepository (
             e.printStackTrace()
             null
         }
+    }
+    suspend fun forceRejectPullRequest(pullNumber: Int): Boolean {
+        val request = ClosePullRequestRequest(state = "closed")
+        val response = apiService.updatePullRequestState(
+            token = authHeader,
+            owner = owner,
+            repo = repoName,
+            pullNumber =pullNumber,
+            request = request
+        )
+        return response.isSuccessful
+    }
+
+    suspend fun forceMergeProposal(pullNumber: Int): Boolean {
+        val request = ClosePullRequestRequest(state = "closed")
+        val response = apiService.updatePullRequestState(
+            token = authHeader,
+            owner = owner,
+            repo = repoName,
+            pullNumber =pullNumber,
+            request = request
+        )
+        return response.isSuccessful
     }
 }

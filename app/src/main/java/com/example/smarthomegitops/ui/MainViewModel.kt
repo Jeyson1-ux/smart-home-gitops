@@ -52,4 +52,35 @@ class MainViewModel (
             }
         }
     }
+//LAB 2
+    /*
+    fun forceRejectIncident() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val success = repository.forceRejectPullRequest(pullNumber = 5)
+
+                if (success) {
+                    _uiState.value = UiState.Normal
+                }
+            } catch (e: Exception ) {
+                Log.e("GitOpsError", "Failed to force reject: ${e.localizedMessage}")
+            }
+        }
+    }
+
+    fun forceMergeProposal() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val success = repository.forceMergeProposal(pullNumber = 5)
+
+                if (success) {
+                    _uiState.value = UiState.Normal
+                }
+            } catch (e: Exception ) {
+                Log.e("GitOpsError", "Failed to force reject: ${e.localizedMessage}")
+            }
+        }
+    }
+
+     */
 }
