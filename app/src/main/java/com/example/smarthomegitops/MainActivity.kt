@@ -88,6 +88,30 @@ fun SmartHomeMainScreen(viewModel: MainViewModel = viewModel()) {
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
                     )
+
+                    /*
+                    //LAB 2
+                    Spacer(modifier = Modifier.height(24.dp))
+                    //1. Force Reject
+                    Button(
+                        onClick = { viewModel.forceRejectIncident() },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray),
+                        modifier = Modifier.fillMaxWidth(0.8f)
+                    ) {
+                        Text("Force Reject (Close PR)", color = Color.White)
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+                    //2. Force Merge
+                    Button(
+                        onClick = { viewModel.forceMergeProposal() },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
+                        modifier = Modifier.fillMaxWidth(0.8f)
+                    ) {
+                        Text("Force Merge (Set Temp to 17.0°C)", color = Color.White)
+                    }
+
+                     */
                 }
             }
         }

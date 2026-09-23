@@ -1,5 +1,6 @@
 package com.example.smarthomegitops.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.smarthomegitops.data.GitHubRepository
@@ -44,11 +45,42 @@ class MainViewModel (
                         _uiState.value = UiState.Normal
                     }
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    Log.e("PollingError", "Error fetching comment", e)
                 }
 
                 delay(30_000L)
             }
         }
     }
+//LAB 2
+    /*
+    fun forceRejectIncident() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val success = repository.forceRejectPullRequest(pullNumber = 5)
+
+                if (success) {
+                    _uiState.value = UiState.Normal
+                }
+            } catch (e: Exception ) {
+                Log.e("GitOpsError", "Failed to force reject: ${e.localizedMessage}")
+            }
+        }
+    }
+
+    fun forceMergeProposal() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val success = repository.forceMergeProposal(pullNumber = 5)
+
+                if (success) {
+                    _uiState.value = UiState.Normal
+                }
+            } catch (e: Exception ) {
+                Log.e("GitOpsError", "Failed to force reject: ${e.localizedMessage}")
+            }
+        }
+    }
+
+     */
 }
